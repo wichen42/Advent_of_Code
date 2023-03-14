@@ -40,5 +40,33 @@ function totalScore() {
     return result.reduce((a, b) => a + b, 0);
 };
 
+const solutionHash = {
+    A: { // rock
+        X: 3, // lose
+        Y: 1, // draw
+        Z: 2, // win
+    },
+    B: { // paper
+        X: 1, // lose
+        Y: 2, // draw
+        Z: 3, // win
+    },
+    C: { // scissor
+        X: 2, // lose
+        Y: 3, // draw
+        Z: 1, // win
+    }
+};
+
+function changeSelf() {
+    const result = input.map((round) => {
+        const opponent = moves[round[0]];
+        const self = solutionHash[round[0]][round[1]];
+        return calculateScore(opponent, self);
+    });
+    return result.reduce((a, b) => a + b, 0);
+};
+
 console.log(totalScore());
+console.log(changeSelf());
 
