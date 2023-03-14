@@ -10,9 +10,9 @@ const input = readFileSync('./input.txt', {encoding: 'utf-8'})
 // console.log(input);
     
 const scoreHash = {
-    X: 1,
-    Y: 2,
-    Z: 3
+    X: 1, // Rock
+    Y: 2, // Paper 
+    Z: 3 // Scissor
 };
 
 const resultHash = {
@@ -46,7 +46,7 @@ function totalScore() {
             console.log(`shape score: ${shapeScore}`);
             score = (3 + shapeScore);
             console.log(`score: ${score} \n`)
-        } else {
+        } else if (resultHash[combo] === -1) {
             console.log(`${combo}: loss(+0)`)
             console.log(`shape score: ${shapeScore}`);
             score = shapeScore;
