@@ -27,11 +27,13 @@ const resultHash = {
     CZ: 0 // Scissor Scissor
 };
 
+const testInput = [['A', 'Y'], ['B', 'X'], ['C', 'Z']];
+
 // Rock(A || X): 1, Paper(B || Y): 2, Scissors(C || Z): 3, Win: 6, Draw: 3, Loss: 0
 function totalScore() {
     let result = 0;
 
-    input.map((round) => {
+    input.forEach((round) => {
         const combo = round[0].concat(round[1]);
         let score = 0;
         const shapeScore = scoreHash[round[1].toUpperCase()];
