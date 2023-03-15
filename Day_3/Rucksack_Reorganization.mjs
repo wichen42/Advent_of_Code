@@ -43,7 +43,21 @@ function part1() {
 };
 
 function part2() {
+    let totalPrioritiy = 0;
+    const groups = [];
 
+    for (let i = 0; i < input.length; i+=3) {
+        groups.push(input.slice(i, i+3));
+    }
+
+    groups.map((group) => {
+        const first = group[0];
+        const second  = group[1];
+        const third = group[2];
+
+        totalPrioritiy += priorityHash[commonItem(first, second, third)];
+    });
+    console.log(totalPrioritiy);
 };
 
-part1();
+part2();
