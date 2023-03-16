@@ -9,13 +9,13 @@ const calories = input.map((ele) => {
 
 console.log(calories);
 
-function findMaxCalories() {
+function part1() {
     return calories[0];
 };
 
-function findTopThree() {
+function part2() {
     return calories.slice(0,3).reduce((prev, curr) => prev + curr, 0);
 };
 
-console.log(findMaxCalories());
-console.log(findTopThree());
+console.log(part1());
+console.log(part2());

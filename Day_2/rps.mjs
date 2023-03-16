@@ -31,7 +31,7 @@ function calculateScore(opponent, self) {
     return self;
 };
 
-function totalScore() {
+function part1() {
     const result = input.map((round) => {
         const opponent = moves[round[0]];
         const self = moves[round[1]];
@@ -58,7 +58,7 @@ const solutionHash = {
     }
 };
 
-function changeSelf() {
+function part2() {
     const result = input.map((round) => {
         const opponent = moves[round[0]];
         const self = solutionHash[round[0]][round[1]];
@@ -67,6 +67,6 @@ function changeSelf() {
     return result.reduce((a, b) => a + b, 0);
 };
 
-console.log(totalScore());
-console.log(changeSelf());
+console.log(part1());
+console.log(part2());
 
