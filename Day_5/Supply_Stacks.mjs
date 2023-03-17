@@ -39,7 +39,20 @@ for (const move of moves) {
 
 
 function part1() {
+    const copyStack = JSON.parse(JSON.stringify(stacks));
+    for (const move of instructions) {
+        for (let i = 0; i < move.count; i++) {
+            const item = copyStack[move.from].pop();
+            copyStack[move.to].push(item);
+        };
+    };
 
+    const top = indexes.map((val) => {
+        const stack = copyStack[val];
+        return stack[stack.length - 1]
+    }).join("");
+
+    console.log(top);
 };
 
 function part2() {
