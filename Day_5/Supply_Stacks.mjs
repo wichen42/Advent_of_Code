@@ -56,7 +56,18 @@ function part1() {
 };
 
 function part2() {
+    const copyStack = JSON.parse(JSON.stringify(stacks));
+    for (const move of instructions) {
+        const items = copyStack[move.from].splice(-move.count, move.count);
+        copyStack[move.to] = copyStack[move.to].concat(items);
+    };
 
+    const top = indexes.map((val) => {
+        const stack = copyStack[val];
+        return stack[stack.length - 1]
+    }).join("");
+
+    console.log(top);
 };
 
 part1();
