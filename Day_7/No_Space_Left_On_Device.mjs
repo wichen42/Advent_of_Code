@@ -81,4 +81,36 @@ function printTree(node, depth = 0) {
     }
   }
 
-  printTree(createTree(input))
+//   printTree(createTree(input))
+
+function getSize(node, directoryCallback = () => {}) {
+    if (!node.isDirectory) {
+      return node.size;
+    }
+    const directorySize = node.children
+      .map((child) => getSize(child, directoryCallback))
+      .reduce((a, b) => a + b, 0);
+  
+    directoryCallback(node.name, directorySize);
+  
+    return directorySize;
+  }
+
+function part1() {
+    const thresholdSize = 100000;
+    const tree = createTree(input);
+  
+    // printTree(tree);
+  
+    let sumSmallFolder = 0;
+  
+    getSize(tree, (name, size) => {
+      if (size < thresholdSize) {
+        sumSmallFolder += size;
+      }
+    });
+  
+    console.log(sumSmallFolder);
+  }
+
+part1();
